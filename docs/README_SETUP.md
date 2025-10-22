@@ -72,3 +72,35 @@ Click `Create`
 
 That's it! It should work like a charm!!!
 
+## Git LFS (Optional)
+If you want to manage large files like `.pt`, `.onnx`, or big datasets, then you might need these to avoid bloating your repo.
+Otherwise, simply add those to `.gitignore` and keep them in local.
+
+
+Run:
+```
+git lfs install
+git lfs track "*.pt"
+git add .gitattributes
+```
+
+If above didn't work, meanwhile `lfs` is not yet installed, instead run below first:
+```
+# Install dependencies
+apt-get update
+apt-get install -y curl software-properties-common
+
+# Add Git LFS repo
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+
+# Install it
+apt-get install -y git-lfs
+
+# Initialize
+git lfs install
+```
+Verify if it works: `git lfs version`
+The process should be as below:
+![img.png](img/lfs.png)
+
+
