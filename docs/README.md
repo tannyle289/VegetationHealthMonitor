@@ -1,0 +1,1 @@
+Hi, welcome to my project, this is my personal project called: Vegetation Health Monitor using some SoTA techniques and frameworks in AI, that is made to practice my skills in those fields.
