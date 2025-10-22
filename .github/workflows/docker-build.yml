@@ -1,0 +1,11 @@
+name: Build Docker Images
+on: [push]
+
+jobs:
+  build-x86:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build x86 dGPU Docker image
+        run: |
+          docker build --pull -t vegetation-health-monitor:latest .
