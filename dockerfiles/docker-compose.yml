@@ -1,0 +1,19 @@
+services:
+  jetson-sim:
+    image: develop-jetson-sim-image
+    container_name: jetson-sim
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    ipc: host
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    ports:
+      - "8888:8888"
