@@ -6,27 +6,35 @@ Jetsons are based on `ARM64`, while your regular laptop/PC (also mine of course)
 ## 🧩 Get and Pull the Image
 We'll use this image: 
 
-`nvcr.io/nvidia/pytorch:23.10-py3` 
+```
+nvcr.io/nvidia/pytorch:23.10-py3
+``` 
 
 You can find other desired versions here: [NVIDIA Pytorch Images](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel-23-10.html)
 
 To pull it in WSL (or any familiar Linux terminal):
 
-`docker pull nvcr.io/nvidia/pytorch:23.10-py3`
+```
+docker pull nvcr.io/nvidia/pytorch:23.10-py3
+```
 
 More information about the setup can be found here: [Install TensorFlow for Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html)
 
 
 (Optional) If you want to double-check architecture compatibility:
 
-`docker run --rm --entrypoint uname nvcr.io/nvidia/pytorch:23.10-py3 -m`
+```
+docker run --rm --entrypoint uname nvcr.io/nvidia/pytorch:23.10-py3 -m
+```
 
 If it prints `x86_64` → perfect ✅. On a real Jetson environment should be `aarch64` instead.
 
 ## 🚀 Run the Image
 Once it's pulled, spin it up like this for the first time:
 
-`docker run -it --gpus all -v $PWD:/workspace --name jetson-sim nvcr.io/nvidia/pytorch:23.10-py3`
+```
+docker run -it --gpus all -v $PWD:/workspace --name jetson-sim nvcr.io/nvidia/pytorch:23.10-py3
+```
 
 with  `jetson-sim` after `--name` is your container's nickname (you can name it whatever you like — otherwise Docker will call it something random like “gallant_narwhal”, and we don't want that so control it yourself 😉).
 
@@ -49,14 +57,18 @@ pip install torch torchvision onnx onnxruntime tensorrt fastapi uvicorn numpy
 
 Then, once you've got your setup perfect, don't forget save your current state as a new image:
 
-`docker commit jetson-sim develop-jetson-sim-image`
+```
+docker commit jetson-sim develop-jetson-sim-image
+```
 
 with `jetson-sim` → your running container, `develop-jetson-sim-image` → new image name you're creating (I'm lazy repeating this, so I will just use my names `jetson-sim` and `develop-jetson-sim-image` directly, you know what they are)
 
 
 Now you can relaunch it:
 
-`docker run -it --gpus all -v your/actual/path:/workspace --name jetson-sim develop-jetson-sim-image`
+```
+docker run -it --gpus all -v your/actual/path:/workspace --name jetson-sim develop-jetson-sim-image
+```
 
 Don't forget `--gpu-all` to let docker access to your local GPU. Otherwise, Docker will fall back to CPU — and you'll regret it when your training takes 12 hours instead of 12 minutes 😬 (believe me I suffered ...).
 
@@ -76,8 +88,8 @@ There are two ways to link Docker to PyCharm (as far as I know)— choose your f
 **2.** Select `Pull or use existing` since we already pulled the image above
 
 Choose your image tag: 
-- `develop-jetson-sim-image:latest` if you committed earlier
-- `nvcr.io/nvidia/pytorch:23.10-py3` otherwise.
+- ```develop-jetson-sim-image:latest``` if you committed earlier
+- ```nvcr.io/nvidia/pytorch:23.10-py3``` otherwise.
 
 *Tips: Try to choose from the dropdown instead of typing manually as shown below, if you did correctly your image should be visible to Pycharm.
 
@@ -124,11 +136,15 @@ where `down` removes the old container completely if any, `up -d` recreates it w
 
 If you already have a container named `jetson-sim`, remove it first: 
 
-`docker rm -f jetson-sim`
+```
+docker rm -f jetson-sim
+```
 
 Verify if it's using your new settings:
 
-`docker inspect jetson-sim | grep IpcMode`
+```
+docker inspect jetson-sim | grep IpcMode
+```
 
 Should show `"IpcMode": "host",` as picture below ✅.
 
@@ -188,7 +204,9 @@ git lfs install
 ```
 Verify if it works: 
 
-`git lfs version`
+```
+git lfs version
+```
 
 You'll see something like 👇:
 
@@ -249,11 +267,15 @@ Input your `<your-fixed-token>` so the server doesn't generate random one.
 
 Generate config file:
 
-`jupyter notebook --generate-config`
+```
+jupyter notebook --generate-config
+```
 
 You can use nano or vi (or whatever editor works inside the container):
 
-`nano ~/.jupyter/jupyter_notebook_config.py`
+```
+nano ~/.jupyter/jupyter_notebook_config.py
+```
 
 Press `Ctrl + W` to find, navigate and set the following:
 
@@ -272,7 +294,9 @@ Exit (`Ctrl + X`).
 
 When you want to start Jupyter:
 
-`jupyter notebook --config=~/.jupyter/jupyter_notebook_config.py`
+```
+jupyter notebook --config=~/.jupyter/jupyter_notebook_config.py
+```
 
 Boom 💥 Your `Python (Jetson Sim)` notebook kernel is ready to roll.
 
