@@ -36,3 +36,9 @@ Sounds ambitious huh, I know... I will try my best.
 ## Phase 4:  LangChain/LangGraph multi‑agent on the edge (IDK which will I use yet)
 - [ ] Add a small agent service that take all above inputs (vision API, LiDAR, ...) to provide reasoning and return  decisions like "urgent prune," "enlarge pit 30 cm," or "plant drought‑tolerant species," ...
 
+## Tech Summary:
+
+To sum up, the project might involve:
+
+Tree Image/Frame → Segmenter (YOLOv11) → LiDAR/Point cloud → Temporal (RNN / GRU / LSTM / Transformer / ViT-based) → Fusion + Health Prediction (MLP, small CNN) → Reasoning and Decision-Making (text, LLM)
+
