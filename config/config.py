@@ -1,4 +1,5 @@
 import os
+from os.path import join as pjoin
 from dotenv import load_dotenv
 
 
@@ -10,9 +11,26 @@ class Config:
         # Feature parameters
         self.DATASET_NAME = os.getenv("DATASET_NAME")
 
+        # machines parameters
+        self.BATCH_SIZE = int(os.getenv("BATCH_SIZE", "8"))
+        self.WORKERS = int(os.getenv("WORKERS", "4"))
+
         # self.LOGGING = os.getenv("LOGGING") == "True"
         # Model parameters
-        self.SEG_MODEL_CHECKPOINT = os.getenv("SEG_MODEL_CHECKPOINT")
+        self.SEG_FOLDER_PATH = os.getenv("SEG_FOLDER_PATH")
+        self.SEG_MODEL_TRAINING_PATH = os.getenv("SEG_MODEL_TRAINING_PATH")
+        self.SEG_EPOCHS = int(os.getenv("SEG_EPOCHS", "200"))
+
+        if (
+            os.getenv("SEG_FOLDER_PATH") is not None
+            and os.getenv("SEG_FOLDER_PATH") != ""
+        ) and (
+            os.getenv("SEG_MODEL_TRAINING_PATH") is not None
+            and os.getenv("SEG_MODEL_TRAINING_PATH") != ""
+        ):
+            self.SEG_MODEL_CHECKPOINT_PATH = pjoin(
+                self.SEG_FOLDER_PATH, self.SEG_MODEL_TRAINING_PATH, "weights/best.pt"
+            )
 
         # YOLO parameters
         if (
