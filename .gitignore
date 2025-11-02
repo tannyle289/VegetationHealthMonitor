@@ -12,3 +12,5 @@ venv/
 *.iml
 __pycache__/
 *.py[cod]
+# dataset, it's public and can be downloaded directly
+data/raw/
