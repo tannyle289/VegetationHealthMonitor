@@ -10,6 +10,7 @@ class Config:
 
         # Feature parameters
         self.DATASET_NAME = os.getenv("DATASET_NAME")
+        self.DATA_PATH = os.getenv("DATA_PATH")
 
         # machines parameters
         self.BATCH_SIZE = int(os.getenv("BATCH_SIZE", "8"))
