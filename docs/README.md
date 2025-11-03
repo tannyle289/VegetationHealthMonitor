@@ -53,23 +53,11 @@ Sounds ambitious huh, I know... I will try my best.
   ![features_2d](img/features_2d.png)
 **Expected Outcome:** per‑frame masks, per‑tree track IDs, cropped img/mask and 2D features over timestamps as below.
 
-<div style="display:flex;justify-content:center;align-items:flex-start;gap:2%;">
-  <div style="text-align:center;width:30%;">
-    <img src="../data/processed/420-02112025/test_Osmanthus%20fragrans_tree_1%20(194).jpg"
-         style="width:100%;height:auto;" />
-    <div><em>predicted img</em></div>
-  </div>
-  <div style="text-align:center;width:30%;">
-    <img src="../data/processed/420-02112025/tree_cropped.png"
-         style="width:100%;height:auto;" />
-    <div><em>img cropped</em></div>
-  </div>
-    <div style="text-align:center;width:30%;">
-        <img src="../data/processed/420-02112025/mask_cropped.png"
-             style="width:100%;height:auto;" />
-        <div><em>masked cropped</em></div>
-    </div>
-</div>
+<p align="middle">
+  <img src="../data/processed/420-02112025/test_Osmanthus%20fragrans_tree_1%20(194).jpg" width="30%" />
+  <img src="../data/processed/420-02112025/tree_cropped.png" width="30%" /> 
+  <img src="../data/processed/420-02112025/mask_cropped.png" width="30%" />
+</p>
 
 ## Phase 2: Dept estimation for 3D conversion (LiDAR alternative)
 - [x] Implement MiDAS for relative depth estimation on RBG
@@ -85,19 +73,11 @@ Sounds ambitious huh, I know... I will try my best.
 - [x] Visualize the tree in point cloud
   - To visualize it, you will need CloudCompare, it should be as below:
   - Welp... you can see that the construction is far from reality 😅, which is expected, also why I decided not to use this estimated `z` values to construct NVI or NRI metrics and instead only extract generic features.
-<div style="display:flex;justify-content:center;align-items:flex-start;gap:2%;">
-  <div style="text-align:center;width:45%;">
-    <img src="img/tree_cropped_pcd.gif"
-         style="width:100%;height:auto;" />
-    <div><em>tree in point cloud with suppressed background (using mask cropped above)</em></div>
-  </div>
-    <div style="text-align:center;width:45%;">
-        <img src="img/tree_cropped_bg_pcd.gif"
-             style="width:100%;height:auto;" />
-        <div><em>tree in point cloud with background (using only cropped image)</em></div>
-    </div>
-</div>
-
+  - **Left** GIF is the result of this project
+  <p align="middle">
+  <img src="img/tree_cropped_pcd.gif" width="45%" />
+  <img src="img/tree_cropped_bg_pcd.gif" width="45%" />
+</p>
 
 **Expected Outcome:** Tree visualization and 3D metrics.
 
