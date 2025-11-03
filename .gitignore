@@ -8,9 +8,9 @@
 /dataSources.local.xml
 venv/
 # JetBrains IDEs
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/dictionaries
-.idea/shelf
+.idea/
+*.iml
 __pycache__/
 *.py[cod]
+# dataset, it's public and can be downloaded directly
+data/raw/
