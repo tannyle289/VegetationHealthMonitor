@@ -1,5 +1,8 @@
 Hi, welcome to my project, this is my personal project called: Vegetation Health Monitor using some SoTA techniques and frameworks in AI, that is made to practice my skills in those fields.
 
+**NOTE: The code/progress update is minimal, sometimes delayed and even terminated due family status and projects! I am for now a freelancer, so I got others projects having higher priorities :)** 
+
+
 For initial setup, please look at [README_SETUP](./README_SETUP.md)
 
 I sketched this project into 4 phases, which might be changed constantly alongside the implementation, personally I don't even know if any phase of this project is doable for me, but I will learn of course and try to keep this file up to date. Because of that reason, this file will be finished last so the tone, content are not finalized like in README_SETUP :) Please understand
